@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pizza 42 Application</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  </head>
+
+  <body>
+    <button id="btn-login" disabled="true" onclick="login()" style="float:right;background-color: greenyellow;">LOG IN</button>
+    <button id="btn-logout" disabled="true" onclick="logout()" style="float:right;display:none;background-color: red;">LOG OUT</button>
+    <h2 style="text-align:center">Pizza 42 Application </h2>
+    <p style="text-align:center">Welcome to our page for placing Pizza orders!</p>
+    
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    <script src="js/app.js"></script>
+     <!— Added nav bar div here —>
+
+	<div class="topnav">
+  	<a id="profile" class="active" href="#home" onclick="displayProfile();" >Profile</a>
+  	<a id="po" href="#pizzaord" onclick="displayPizzaOrder();">PizzaOrder</a>
+    <a id="po" href="#Users" onclick="getUsers();">Get Users</a>
+    <a id="logout" href="#loginout" onclick="loginout();"> </a>
+	</div>
+
+    <div class="hidden" id="gated-content">
+      <div id="user_profile_section">
+        <div style="display: inline-block;"> nickname: </div>
+        <div style="display: inline-block;" id="nickname"> </div>
+        <br><br>
+        <div style="display: inline-block;"> name: </div>
+        <div style="display: inline-block;" id="name"> </div>
+        <br><br>
+        <div style="display: inline-block;"> picture: </div>
+        <div style="display: inline-block;" id="picture"> </div>
+        <br><br>
+        <div style="display: inline-block;"> Updated Time: </div>
+        <div style="display: inline-block;" id="Updated Time"> </div>
+        <br><br>
+        <div style="display: inline-block;"> Email Verified: </div>
+        <div style="display: inline-block;" id="Email Verified"> </div>
+        <br><br>
+        <div style="display: inline-block;"> sub: </div>
+        <div style="display: inline-block;" id="sub"> </div>
+        <br><br>
+        <div style="display: inline-block;"> LoginCount: </div>
+        <div style="display: inline-block;" id="LoginCount"> </div>
+        <p>
+          You're seeing this content because you're currently
+          <strong>logged in</strong>.
+        </p>
+        <label>
+          Access token:
+          <pre id="ipt-access-token"></pre>
+        </label>
+        <label>
+          User profile:
+          <pre id="ipt-user-profile"></pre>
+        </label>
+        
+      </div>
+    </div>
+    <div id="pizza_section" style="display:none">
+      <text id="txt-pizza"><b>Would you like to place a pizza order? </b></text> <br>
+      <button id="btn-call-api" onclick="callApi()">Order Pizza</button> <p id = "demo"> </p>
+      <label> 
+        API Call result:
+        <pre id="api-call-result"></pre> 
+      </label>
+    </div>
+    <div id="users_section" style="display:none">
+      <label> 
+        API Call result:
+        <pre id="users-call-result"></pre> 
+      </label>
+    </div>
+  </body>
+</html>
