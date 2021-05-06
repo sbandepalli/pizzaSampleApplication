@@ -3,7 +3,7 @@ const fetchAuthConfig = () => fetch("/auth_config.json");
 var token = null;
 var userinfo = null;
 var d = new Date();
-var management_token = "PUT IN ACCURATE MANAGEMENT API TOKEN VALUE";
+var management_token = "YOUR TOKEN VALUE GOES HERE";
 
 const configureClient = async () => {
     const response = await fetchAuthConfig();
@@ -70,7 +70,7 @@ const updateUI = async () => {
         document.getElementById("picture").innerText=userinfo.picture;
         document.getElementById("Updated Time").innerText=userinfo.updated_at;
         document.getElementById("sub").innerText=userinfo.sub;
-        document.getElementById("Login Count").innerText=userinfo.last_ip;
+        document.getElementById("Login Count").innerText=userinfo.logins_count;
 
         
       } else {
@@ -151,16 +151,23 @@ const callApi = async () => {
 
 const getUsers = async () => { //This functionality is failing due to CORS issue. 
   try {
-      const metadata_response = await fetch("https://dev-uc3fo8dh.us.auth0.com/api/v2/users/"+userinfo.sub, {
+    await fetch("https://dev-uc3fo8dh.us.auth0.com/api/v2/users", { //Pre flight settings needed.
+      method: 'GET',
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Request-Method": "GET",
+        "Access-Control-Request-Headers": "Authorization",
+        "Origin": "http://localhost:3000",
+        "Authorization": `Bearer ${management_token}`
+      }
+    });
+      const metadata_response = await fetch("https://dev-uc3fo8dh.us.auth0.com/api/v2/users", {
         method: 'GET',
         headers: {
-          "Host": "dev-uc3fo8dh.us.auth0.com",
-          "Sec-Fetch-Dest": "empty",
-          "Sec-Fetch-Mode": "cors",
-          "Sec-Fetch-Site": "cross-site",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Origin": "http://localhost:3000",
           "Authorization": `Bearer ${management_token}`
-        },
-        mode: 'no-cors'
+        }
       });
       const responseData = await metadata_response.json();
       const responseElement = document.getElementById("users-call-result");
