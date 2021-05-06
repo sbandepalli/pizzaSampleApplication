@@ -2,5 +2,5 @@
     "domain": "dev-uc3fo8dh.us.auth0.com",
     "clientId": "mcKI5h35dsjg21b9m1Op3XqADA6pLeA1",
     "audience": "https://api.mysite.com",
-    "management_token" : "YOUR TOKEN VALUE GOES HERE"
+    "management_token" : "PUT IN ACCURATE MANAGEMENT API TOKEN VALUE"
 }
