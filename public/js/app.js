@@ -154,10 +154,10 @@ const getUsers = async () => { //This functionality is failing due to CORS issue
     await fetch("https://dev-uc3fo8dh.us.auth0.com/api/v2/users", { //Pre flight settings needed.
       method: 'GET',
       headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Origin": "https://mypizzaapp42.herokuapp.com",
         "Access-Control-Request-Method": "GET",
         "Access-Control-Request-Headers": "Authorization",
-        "Origin": "http://localhost:3000",
+        "Origin": "https://mypizzaapp42.herokuapp.com",
         "Authorization": `Bearer ${management_token}`
       }
     });
